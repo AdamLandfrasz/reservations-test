@@ -1,0 +1,4 @@
+.idea/
+*.properties
+# Project exclude paths
+/target/
