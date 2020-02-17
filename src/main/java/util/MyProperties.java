@@ -24,8 +24,8 @@ public class MyProperties {
         return getProperties().getProperty("driver");
     }
 
-    public static String getTimeout() {
-        return getProperties().getProperty("timeout");
+    public static long getTimeout() {
+        return Long.parseLong(getProperties().getProperty("timeout"));
     }
 
     public static String getAdminLogin() {
