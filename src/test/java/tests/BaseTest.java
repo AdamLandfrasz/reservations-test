@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import util.MyProperties;
 
 public abstract class BaseTest {
-    static final String ADMIN_LOGIN = MyProperties.getAdminLogin();
+    static final String ADMIN_USERNAME = MyProperties.getAdminUsername();
     static final String ADMIN_PW = MyProperties.getAdminPw();
 
     static WebDriver driver;

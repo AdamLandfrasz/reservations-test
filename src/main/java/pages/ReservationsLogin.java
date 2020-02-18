@@ -17,4 +17,14 @@ public class ReservationsLogin extends BasePage {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
+
+    public void navigateToLogin() {
+        navigateToUrl("login");
+    }
+
+    public void loginWithCredentials(String username, String password) {
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
+        submitButton.click();
+    }
 }

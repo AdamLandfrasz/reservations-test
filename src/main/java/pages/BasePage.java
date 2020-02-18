@@ -13,4 +13,8 @@ public abstract class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, MyProperties.getTimeout());
     }
+
+    protected void navigateToUrl(String urlPart) {
+        driver.get(BASE_URL + urlPart);
+    }
 }

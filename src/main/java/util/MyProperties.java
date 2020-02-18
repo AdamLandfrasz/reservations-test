@@ -28,16 +28,16 @@ public class MyProperties {
         return Long.parseLong(getProperties().getProperty("timeout"));
     }
 
-    public static String getAdminLogin() {
-        return getProperties().getProperty("admin_login");
+    public static String getAdminUsername() {
+        return getProperties().getProperty("admin_username");
     }
 
     public static String getAdminPw() {
         return getProperties().getProperty("admin_pw");
     }
 
-    public static String getUserLogin() {
-        return getProperties().getProperty("user_login");
+    public static String getUserUsername() {
+        return getProperties().getProperty("user_username");
     }
 
     public static String getUserPw() {
