@@ -31,4 +31,9 @@ public class ReservationsHome extends BasePage {
             return false;
         }
     }
+
+    public void navigateToNewUserPage(){
+
+        newUserLink.click();
+    }
 }
