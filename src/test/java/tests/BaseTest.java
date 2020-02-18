@@ -12,6 +12,7 @@ public abstract class BaseTest {
     static final String ADMIN_PW = MyProperties.getAdminPw();
     static final String USER_USERNAME = MyProperties.getUserUsername();
     static final String USER_PW = MyProperties.getUserPw();
+    static final String TEST_PASSWORD = MyProperties.getUserPw();
 
     WebDriver driver;
 
