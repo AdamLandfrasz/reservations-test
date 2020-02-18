@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ReservationsHome extends BasePage {
-    @FindBy(xpath = "//button[text()='Logout']")
-    WebElement logoutButton;
     @FindBy(xpath = "//a[@href='/home']")
     WebElement homeLink;
     @FindBy(xpath = "//a[@href='/rooms']")
@@ -24,11 +22,7 @@ public class ReservationsHome extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public boolean isLogoutButtonPresent() {
-        try{
-            return wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public void navigateToHome() {
+        navigateToUrl("home");
     }
 }
