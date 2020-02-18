@@ -1,5 +1,4 @@
 .idea/
 *.properties
-*.iml
 # Project exclude paths
 /target/
