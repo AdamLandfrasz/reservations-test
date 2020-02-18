@@ -1,27 +1,24 @@
 package tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.ReservationsHome;
 import pages.ReservationsLogin;
-import tests.Login;
 
 public class DatePicker extends BaseTest{
-    private final ReservationsHome homePage = new ReservationsHome(driver);
-    private final ReservationsLogin loginPage = new ReservationsLogin(driver);
 
-    @BeforeEach
-    void login() {
+    @Test
+    void sout() {
+        ReservationsLogin loginPage = new ReservationsLogin(driver);
+
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, ADMIN_PW);
-    }
 
-    @AfterAll
-    void logout() {
+        System.out.println("valami");
+
+        ReservationsHome homePage = new ReservationsHome(driver);
         loginPage.logout();
         homePage.navigateToHome();
     }
+
 
 }
