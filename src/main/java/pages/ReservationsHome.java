@@ -17,6 +17,12 @@ public class ReservationsHome extends BasePage {
     @FindBy(xpath = "//a[@href='/adduser']")
     WebElement newUserLink;
 
+    @FindBy(xpath = "//button[@class='react-datetime-picker__clear-button react-datetime-picker__button']")
+    WebElement datePicker;
+
+    @FindBy(xpath = "//button[@text()='Submit']")
+    WebElement submitButton;
+
     public ReservationsHome(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
@@ -24,5 +30,9 @@ public class ReservationsHome extends BasePage {
 
     public void navigateToHome() {
         navigateToUrl("home");
+    }
+
+    public void clearDate() {
+
     }
 }
