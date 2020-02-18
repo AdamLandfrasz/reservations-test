@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,12 +37,14 @@ public class ReservationsLogin extends BasePage {
     }
 
     public void logout() {
+        By loginPageForm = By.xpath("//input[@id='username']//ancestor-or-self::form");
+
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
-        wait.until(ExpectedConditions.invisibilityOf(logoutButton));
+        wait.until(ExpectedConditions.presenceOfElementLocated(loginPageForm));
     }
 
     public boolean isLogoutButtonPresent() {
-        try{
+        try {
             return wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
@@ -49,9 +52,10 @@ public class ReservationsLogin extends BasePage {
     }
 
     public boolean isLoginFormPresent() {
+        By loginPageForm = By.xpath("//input[@id='username']//ancestor-or-self::form");
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(submitButton));
-            return loginForm.isDisplayed();
+            return wait.until(ExpectedConditions.presenceOfElementLocated(loginPageForm)).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
         }
