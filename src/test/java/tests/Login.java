@@ -26,4 +26,15 @@ public class Login extends BaseTest {
         homePage.navigateToHome();
         Assertions.assertTrue(loginPage.isLoginFormPresent());
     }
+
+    @Test
+    void invalidLogin() {
+        ReservationsLogin loginPage = new ReservationsLogin(driver);
+        ReservationsHome homePage = new ReservationsHome(driver);
+
+        loginPage.navigateToLogin();
+        loginPage.loginWithCredentials(ADMIN_USERNAME, "invalid_pw");
+        homePage.navigateToHome();
+        Assertions.assertTrue(loginPage.isLoginFormPresent());
+    }
 }
