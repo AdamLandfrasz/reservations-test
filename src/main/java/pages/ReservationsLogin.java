@@ -31,7 +31,9 @@ public class ReservationsLogin extends BasePage {
     public void loginWithCredentials(String username, String password) {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
-        submitButton.click();
+        passwordField.submit();
+        //submitButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
     }
 
     public void logout() {

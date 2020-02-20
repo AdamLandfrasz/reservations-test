@@ -18,4 +18,9 @@ public abstract class BasePage {
     protected void navigateToUrl(String urlPart) {
         driver.get(BASE_URL + urlPart);
     }
+
+    public String getCurrentURL(){
+
+        return driver.getCurrentUrl();
+    }
 }
