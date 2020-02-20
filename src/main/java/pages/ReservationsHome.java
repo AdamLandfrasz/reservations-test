@@ -34,7 +34,7 @@ public class ReservationsHome extends BasePage {
     }
 
     public void clearDate() {
-
+        // To be automated
     }
 
     public boolean isNewUserLinkPresent() {
