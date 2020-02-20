@@ -6,10 +6,11 @@ import pages.ReservationsHome;
 import pages.ReservationsLogin;
 
 public class Login extends BaseTest {
+    private final ReservationsLogin loginPage = new ReservationsLogin(driver);
+    private final ReservationsHome homePage = new ReservationsHome(driver);
+
     @Test
     void successfulLogin() {
-        ReservationsLogin loginPage = new ReservationsLogin(driver);
-
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, ADMIN_PW);
         Assertions.assertTrue(loginPage.isLogoutButtonPresent());
@@ -17,23 +18,22 @@ public class Login extends BaseTest {
 
     @Test
     void logout() {
-        ReservationsLogin loginPage = new ReservationsLogin(driver);
-        ReservationsHome homePage = new ReservationsHome(driver);
-
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, ADMIN_PW);
         loginPage.logout();
+
         homePage.navigateToHome();
         Assertions.assertTrue(loginPage.isLoginFormPresent());
     }
 
     @Test
     void invalidLogin() {
-        ReservationsLogin loginPage = new ReservationsLogin(driver);
         ReservationsHome homePage = new ReservationsHome(driver);
 
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, "invalid_pw");
+        Assertions.assertTrue(loginPage.isAlertPresent());
+
         homePage.navigateToHome();
         Assertions.assertTrue(loginPage.isLoginFormPresent());
     }

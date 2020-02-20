@@ -1,6 +1,8 @@
 package tests;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,10 +15,10 @@ public abstract class BaseTest {
     static final String USER_USERNAME = MyProperties.getUserUsername();
     static final String USER_PW = MyProperties.getUserPw();
 
-    WebDriver driver;
+    static WebDriver driver;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         switch (MyProperties.getDriver()) {
             case "chrome":
                 driver = new ChromeDriver();
@@ -28,8 +30,8 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterEach
-    void tearDown() {
+    @AfterAll
+    static void tearDown() {
         if (driver != null) {
             driver.quit();
         }
