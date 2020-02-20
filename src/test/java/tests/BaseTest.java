@@ -12,8 +12,8 @@ import util.MyProperties;
 public abstract class BaseTest {
     static final String ADMIN_USERNAME = MyProperties.getAdminUsername();
     static final String ADMIN_PW = MyProperties.getAdminPw();
-    static final String USER_USERNAME = MyProperties.getUserUsername();
-    static final String USER_PW = MyProperties.getUserPw();
+    static final String RECEPTIONIST_USERNAME = MyProperties.getUserUsername();
+    static final String RECEPTIONIST_PW = MyProperties.getUserPw();
 
     static WebDriver driver;
 
