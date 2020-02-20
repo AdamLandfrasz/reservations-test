@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.ReservationsHome;
@@ -8,6 +9,13 @@ import pages.ReservationsLogin;
 public class Login extends BaseTest {
     private final ReservationsLogin loginPage = new ReservationsLogin(driver);
     private final ReservationsHome homePage = new ReservationsHome(driver);
+
+    @AfterEach
+    void logoutAfterTest() {
+        if (loginPage.isLogoutButtonPresentNoWait()) {
+            loginPage.logout();
+        }
+    }
 
     @Test
     void successfulLogin() {
@@ -28,8 +36,6 @@ public class Login extends BaseTest {
 
     @Test
     void invalidLogin() {
-        ReservationsHome homePage = new ReservationsHome(driver);
-
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, "invalid_pw");
         Assertions.assertTrue(loginPage.isAlertPresent());
