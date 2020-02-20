@@ -12,7 +12,7 @@ public class Login extends BaseTest {
 
     @AfterEach
     void logoutAfterTest() {
-        if (loginPage.isLogoutButtonPresentNoWait()) {
+        if (loginPage.isLogoutButtonPresent()) {
             loginPage.logout();
         }
     }
@@ -50,6 +50,6 @@ public class Login extends BaseTest {
         Assertions.assertTrue(loginPage.isAlertPresent());
 
         homePage.navigateToHome();
-        Assertions.assertTrue(loginPage.isLoginFormPresent());
+        Assertions.assertFalse(loginPage.getCurrentURL().endsWith("home"));
     }
 }

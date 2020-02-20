@@ -15,7 +15,7 @@ public class NewUser extends BaseTest {
 
     @AfterEach
     void logoutAfterTest() {
-        if (loginPage.isLogoutButtonPresentNoWait()) {
+        if (loginPage.isLogoutButtonPresent()) {
             loginPage.logout();
         }
     }

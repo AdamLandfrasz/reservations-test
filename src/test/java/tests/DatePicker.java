@@ -6,6 +6,7 @@ import pages.ReservationsLogin;
 
 public class DatePicker extends BaseTest{
 
+    @Disabled
     @Test
     void sout() {
         ReservationsLogin loginPage = new ReservationsLogin(driver);

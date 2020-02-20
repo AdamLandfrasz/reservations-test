@@ -31,25 +31,18 @@ public class ReservationsLogin extends BasePage {
     public void loginWithCredentials(String username, String password) {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
-        passwordField.submit();
-        //submitButton.click();
-        wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
+        submitButton.click();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
+        } catch (TimeoutException ignored){}
     }
 
     public void logout() {
-        wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+        logoutButton.click();
         wait.until(ExpectedConditions.elementToBeClickable(submitButton));
     }
 
     public boolean isLogoutButtonPresent() {
-        try {
-            return wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).isDisplayed();
-        } catch (NoSuchElementException | TimeoutException e) {
-            return false;
-        }
-    }
-
-    public boolean isLogoutButtonPresentNoWait() {
         try {
             return logoutButton.isDisplayed();
         } catch (NoSuchElementException e) {
