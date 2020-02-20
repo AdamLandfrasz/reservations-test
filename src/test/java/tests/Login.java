@@ -18,10 +18,19 @@ public class Login extends BaseTest {
     }
 
     @Test
-    void successfulLogin() {
+    void adminLogin() {
         loginPage.navigateToLogin();
         loginPage.loginWithCredentials(ADMIN_USERNAME, ADMIN_PW);
         Assertions.assertTrue(loginPage.isLogoutButtonPresent());
+        Assertions.assertTrue(homePage.isNewUserLinkPresent());
+    }
+
+    @Test
+    void receptionistLogin() {
+        loginPage.navigateToLogin();
+        loginPage.loginWithCredentials(RECEPTIONIST_USERNAME, RECEPTIONIST_PW);
+        Assertions.assertTrue(loginPage.isLogoutButtonPresent());
+        Assertions.assertFalse(homePage.isNewUserLinkPresent());
     }
 
     @Test
