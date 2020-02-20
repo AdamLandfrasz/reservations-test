@@ -10,8 +10,11 @@ public class ReservationsLogin extends BasePage {
     WebElement usernameField;
     @FindBy(xpath = "//input[@id='password']")
     WebElement passwordField;
-    @FindBy(xpath = "//button[text()='Submit']")
+    @FindBy(xpath = "//form//button[text()='Submit']")
     WebElement submitButton;
+
+    @FindBy(xpath = "//div[@id='alert']")
+    WebElement alertBox;
 
     @FindBy(xpath = "//button[text()='Logout']")
     WebElement logoutButton;
@@ -32,10 +35,8 @@ public class ReservationsLogin extends BasePage {
     }
 
     public void logout() {
-        By loginPageForm = By.xpath("//form[//button[text()='Submit']]");
-
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(loginPageForm));
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton));
     }
 
     public boolean isLogoutButtonPresent() {
@@ -46,21 +47,25 @@ public class ReservationsLogin extends BasePage {
         }
     }
 
-    public boolean isLoginFormPresent() {
-        By loginPageForm = By.xpath("//input[@id='username']//ancestor-or-self::form");
-
+    public boolean isLogoutButtonPresentNoWait() {
         try {
-            return wait.until(ExpectedConditions.presenceOfElementLocated(loginPageForm)).isDisplayed();
+            return logoutButton.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean isLoginFormPresent() {
+        try {
+            return wait.until(ExpectedConditions.elementToBeClickable(submitButton)).isDisplayed();
         } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
     }
 
     public boolean isAlertPresent() {
-        By loginPageForm = By.xpath("//div[@id='alert']");
-
         try {
-            return wait.until(ExpectedConditions.presenceOfElementLocated(loginPageForm)).isDisplayed();
+            return wait.until(ExpectedConditions.visibilityOf(alertBox)).isDisplayed();
         } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
