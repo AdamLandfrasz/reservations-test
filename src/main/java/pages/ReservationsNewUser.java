@@ -24,27 +24,30 @@ public class ReservationsNewUser extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public void registerAdminUser(String username, String password){
+    public void navigateToNewUser() {
+        navigateToUrl("adduser");
+    }
 
-        By adminRole = By.xpath("//*[@id=\"menu-role-native-required\"]//li[text()=\"ADMIN\"]");
+    public void registerUser(String username, String password, String role){
+
+        By selectedRole = By.xpath("//li[@data-value='" + role +"']");
 
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
-        roleDropdownElement.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(adminRole)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(roleDropdownElement)).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(selectedRole)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+    }
+
+    public void registerUserWithoutRole(String username, String password){
+
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
         submitButton.click();
     }
 
-
-    public void registerReceptionistUser(String username, String password){
-
-        By receptionistRole = By.xpath("//*[@id=\"menu-role-native-required\"]//li[text()=\"RECEPTIONIST\"]");
-
-        usernameField.sendKeys(username);
-        passwordField.sendKeys(password);
-        roleDropdownElement.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(receptionistRole)).click();
-        submitButton.click();
+    public void goToAddUserURL(){
+        navigateToUrl("adduser");
     }
 
 }
