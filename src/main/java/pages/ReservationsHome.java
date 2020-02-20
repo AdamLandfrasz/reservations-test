@@ -30,6 +30,10 @@ public class ReservationsHome extends BasePage {
         navigateToUrl("home");
     }
 
+    public void navigateToNewUser() {
+        navigateToUrl("adduser");
+    }
+
     public void clearDate() {
 
     }
