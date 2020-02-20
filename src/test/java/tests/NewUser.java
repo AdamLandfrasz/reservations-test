@@ -66,7 +66,7 @@ public class NewUser extends BaseTest {
 
         newUser.goToAddUserURL();
 
-        Assertions.assertFalse(driver.getCurrentUrl().endsWith("adduser"));
+        Assertions.assertFalse(newUser.getCurrentURL().endsWith("adduser"));
     }
 
 }
